@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deer Denominator</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      console.log('Inline script running - about to import main');
+      import('/src/main.tsx').then(() => {
+        console.log('main.tsx imported successfully');
+      }).catch(err => {
+        console.error('Failed to import main.tsx:', err);
+      });
+    </script>
+  </body>
+</html>
