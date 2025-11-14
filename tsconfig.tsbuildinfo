@@ -1,0 +1,1 @@
+{"root":["./src/app-simple.tsx","./src/app.tsx","./src/main.tsx","./src/components/bulkuploadform.tsx","./src/components/cameradatatable.tsx","./src/components/camerainputform.tsx","./src/components/resultsdisplay.tsx","./src/types/index.ts","./src/utils/calculations.ts","./src/utils/fileparser.ts"],"version":"5.9.3"}
