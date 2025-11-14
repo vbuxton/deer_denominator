@@ -1,11 +1,9 @@
 import { CameraData, CalculationResults, DensityResult } from '../types/index';
 
-const DEER_MOVEMENT_RATE = 0.5; // Default movement rate, can be made configurable
-
-export const calculateCameraDensity = (camera: CameraData): number => {
+export const calculateCameraDensity = (camera: CameraData, movementRate: number): number => {
   const denominator = 
     camera.trapNights * 
-    DEER_MOVEMENT_RATE * 
+    movementRate * 
     camera.detectionDistance * 
     (2 + camera.detectionAngleRight + camera.detectionAngleLeft);
   
@@ -14,10 +12,10 @@ export const calculateCameraDensity = (camera: CameraData): number => {
   return camera.totalDeer / denominator;
 };
 
-export const calculateAllDensities = (cameras: CameraData[]): CalculationResults => {
+export const calculateAllDensities = (cameras: CameraData[], movementRate: number): CalculationResults => {
   const perCamera: DensityResult[] = cameras.map(camera => ({
     cameraId: camera.id,
-    density: calculateCameraDensity(camera)
+    density: calculateCameraDensity(camera, movementRate)
   }));
 
   const averageDensity = perCamera.length > 0

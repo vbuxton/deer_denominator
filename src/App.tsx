@@ -14,6 +14,7 @@ export const App: React.FC = () => {
   const [totalCameras, setTotalCameras] = useState(0);
   const [cameras, setCameras] = useState<CameraData[]>([]);
   const [results, setResults] = useState<CalculationResults | null>(null);
+  const [movementRate, setMovementRate] = useState<number | null>(null);
 
   const handleStartManual = (count: number) => {
     setTotalCameras(count);
@@ -45,7 +46,11 @@ export const App: React.FC = () => {
       alert('Please add at least one camera');
       return;
     }
-    const calculatedResults = calculateAllDensities(cameras);
+    if (movementRate === null || movementRate <= 0) {
+      alert('Please enter a valid deer movement rate greater than 0');
+      return;
+    }
+    const calculatedResults = calculateAllDensities(cameras, movementRate);
     setResults(calculatedResults);
   };
 
@@ -54,6 +59,7 @@ export const App: React.FC = () => {
     setTotalCameras(0);
     setCameras([]);
     setResults(null);
+    setMovementRate(null);
   };
 
   return (
@@ -104,6 +110,22 @@ export const App: React.FC = () => {
                         Start
                       </button>
                     </div>
+                  </div>
+                </div>
+
+                <div className="movement-rate-box">
+                  <h3>🦌 Deer Movement Rate *</h3>
+                  <p>Average daily distance traveled (miles/day):</p>
+                  <div className="input-group">
+                    <input
+                      type="number"
+                      min="0.01"
+                      step="0.1"
+                      value={movementRate ?? ''}
+                      onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
+                      placeholder="Required - e.g., 0.5"
+                      required
+                    />
                   </div>
                 </div>
               </div>
