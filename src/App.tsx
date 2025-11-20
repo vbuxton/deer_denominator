@@ -66,10 +66,20 @@ export const App: React.FC = () => {
     <div className="page-container">
       <header className="page-header">
         <div className="page-header-content">
-          <h1>🦌 Deer Denominator</h1>
-          <p>Calculate deer density from camera trap data</p>
+          <h1>Wildlife Density Estimator</h1>
         </div>
       </header>
+
+      {/* Description and Logos Section */}
+      <div className="info-section">
+        <div className="info-content">
+          <img src="/deer_denominator/cooperative-logo.png" alt="Cooperative Unit Logo" className="info-logo info-logo-left" />
+          <p className="project-description">
+            This tool allows users to enter data from motion-triggered game cameras to calculate wildlife density using the Random Encounter Model, a methodology first developed by Rowcliffe et al. (2008). It was developed for white-tailed deer but should be applicable to most wildlife species that are reliably detected on camera. Users must provide several parameters. First, the number of cameras and the total number of trap nights from each camera. Then the total number of the focal species detected on each camera. For each camera, users must also know the detection distance (in km) and the detection angles on either side of the camera (degrees). Finally, users must provide the best estimate for distance moved per day for the study species in the region (this is best derived from radiotelemetry data or literature). Data can be input manually or a csv can be uploaded. Refer to the literature referenced in the footer for more details on how to measure these parameters and what the study design assumptions are. Density will be provided as an average of each camera output with standard deviation and should be interpreted as the estimated number of individuals per km.
+          </p>
+          <img src="/deer_denominator/msu-logo.png" alt="MSU Logo" className="info-logo info-logo-right" />
+        </div>
+      </div>
 
       <main className="container" style={{ paddingTop: '32px', paddingBottom: '32px' }}>
         {inputMethod === 'setup' && (
@@ -309,6 +319,14 @@ export const App: React.FC = () => {
           </div>
         )}
       </main>
+
+      {/* Footer */}
+      <footer className="app-footer-bar">
+        <div className="footer-bar-content">
+          <span className="footer-contact">For questions, contact Brett DeGregorio at degreg12@msu.edu</span>
+          <span className="footer-credit">Application design by Valerie Buxton</span>
+        </div>
+      </footer>
     </div>
   );
 };

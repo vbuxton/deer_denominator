@@ -54,13 +54,29 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ results }) => {
         </div>
       </div>
 
-      <div className="formula-box">
+      <div className="formula-box" style={{ background: '#f0f9f4', borderRadius: '8px', borderLeft: '4px solid #18453B', padding: '16px' }}>
         <p>
           <strong>Formula:</strong> Total Deer / (Trap Nights × Movement Rate × Detection Distance × (2 + Angle Left (radians) + Angle Right (radians)))
         </p>
         <p style={{ marginTop: '8px', fontSize: '0.875rem', color: '#6b7280' }}>
           Note: Detection angles are converted from degrees to radians (angle × π/180)
         </p>
+        <div style={{ marginTop: '16px', padding: '16px', background: '#e8f5e9', borderRadius: '8px', borderLeft: '4px solid #2d6a4f' }}>
+          <p style={{ fontSize: '0.875rem', color: '#333', lineHeight: '1.6', marginBottom: '8px' }}>
+            <strong>References:</strong> For more details about the Random Encounter Model, the assumptions of the model, and applications of its use please start with:
+          </p>
+          <ol style={{ fontSize: '0.875rem', color: '#333', lineHeight: '1.6', paddingLeft: '20px', margin: 0 }}>
+            <li style={{ marginBottom: '8px' }}>
+              Rowcliffe, J.M., Field, J., Turvey, S.T. and Carbone, C., 2008. Estimating animal density using camera traps without the need for individual recognition. <em>Journal of Applied Ecology</em>, pp.1228-1236.
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              Palencia, P., Barroso, P., Vicente, J., Hofmeester, T.R., Ferreres, J. and Acevedo, P., 2022. Random encounter model is a reliable method for estimating population density of multiple species using camera traps. <em>Remote Sensing in Ecology and Conservation</em>, 8(5), pp.670-682.
+            </li>
+            <li>
+              McTigue, L.E. and DeGregorio, B.A., 2023. Effects of landcover on mesocarnivore density and detection rate along an urban to rural gradient. <em>Global Ecology and Conservation</em>, 48, p.e02716.
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
   );
