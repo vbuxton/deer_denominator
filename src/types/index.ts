@@ -15,4 +15,9 @@ export interface DensityResult {
 export interface CalculationResults {
   perCamera: DensityResult[];
   averageDensity: number;
+  standardDeviation: number;
+  totalTrapNights: number;
+  averageDetectionRate: number;
+  averageAngleLeft: number;
+  averageAngleRight: number;
 }

@@ -86,7 +86,7 @@ export const App: React.FC = () => {
                     className="option-button"
                   >
                     <h3>📤 Bulk Upload</h3>
-                    <p>Upload Excel/CSV or paste data</p>
+                    <p>Upload CSV or paste data</p>
                   </button>
 
                   <div className="manual-input-box">
@@ -113,21 +113,6 @@ export const App: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="movement-rate-box">
-                  <h3>🦌 Deer Movement Rate *</h3>
-                  <p>Average daily distance traveled (miles/day):</p>
-                  <div className="input-group">
-                    <input
-                      type="number"
-                      min="0.01"
-                      step="0.1"
-                      value={movementRate ?? ''}
-                      onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
-                      placeholder="Required - e.g., 0.5"
-                      required
-                    />
-                  </div>
-                </div>
               </div>
 
               {cameras.length > 0 && (
@@ -168,6 +153,21 @@ export const App: React.FC = () => {
             >
               ← Back
             </button>
+            <div className="card">
+              <h3>🦌 Deer Movement Rate *</h3>
+              <p>Average daily distance traveled (km/day):</p>
+              <div className="input-group">
+                <input
+                  type="number"
+                  min="0.01"
+                  step="0.1"
+                  value={movementRate ?? ''}
+                  onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
+                  placeholder="Required - e.g., 0.8"
+                  required
+                />
+              </div>
+            </div>
             <BulkUploadForm onLoadCameras={handleLoadBulkCameras} />
             {cameras.length > 0 && (
               <>
@@ -204,6 +204,21 @@ export const App: React.FC = () => {
             >
               ← Back
             </button>
+            <div className="card">
+              <h3>🦌 Deer Movement Rate *</h3>
+              <p>Average daily distance traveled (km/day):</p>
+              <div className="input-group">
+                <input
+                  type="number"
+                  min="0.01"
+                  step="0.1"
+                  value={movementRate ?? ''}
+                  onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
+                  placeholder="Required - e.g., 0.8"
+                  required
+                />
+              </div>
+            </div>
             <CameraInputForm
               onAddCamera={handleAddCamera}
               totalCameras={totalCameras}
@@ -239,12 +254,33 @@ export const App: React.FC = () => {
             <div className="alert alert-success">
               <p style={{ fontWeight: 600 }}>✓ All {totalCameras} cameras entered!</p>
             </div>
+            <div className="card">
+              <h3>🦌 Deer Movement Rate *</h3>
+              <p>Average daily distance traveled (km/day):</p>
+              <div className="input-group">
+                <input
+                  type="number"
+                  min="0.01"
+                  step="0.1"
+                  value={movementRate ?? ''}
+                  onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
+                  placeholder="Required - e.g., 0.8"
+                  required
+                />
+              </div>
+            </div>
             <CameraDataTable
               cameras={cameras}
               onUpdateCamera={handleUpdateCamera}
               onDeleteCamera={handleDeleteCamera}
             />
             <div className="flex gap-4">
+              <button
+                onClick={() => setTotalCameras(totalCameras + 1)}
+                className="btn-secondary btn-large"
+              >
+                Add More Cameras
+              </button>
               <button
                 onClick={handleCalculate}
                 className="flex-1 btn-success btn-large"

@@ -104,13 +104,14 @@ export const CameraInputForm: React.FC<CameraInputFormProps> = ({
           </div>
 
           <div className="form-group">
-            <label>Detection Distance (meters)</label>
+            <label>Detection Distance (km)</label>
             <input
               type="number"
               name="detectionDistance"
               value={formData.detectionDistance}
               onChange={handleChange}
-              placeholder="e.g., 15"
+              placeholder="e.g., 0.015"
+              step="0.001"
             />
             {errors.detectionDistance && <p className="error-message">{errors.detectionDistance}</p>}
           </div>
@@ -141,8 +142,8 @@ export const CameraInputForm: React.FC<CameraInputFormProps> = ({
         </div>
 
         <div className="flex gap-4">
-          <button type="submit" disabled={isComplete} className="btn-primary">
-            Add Camera
+          <button type="submit" className="btn-primary">
+            {currentCount >= totalCameras - 1 ? 'Done' : 'Add Camera'}
           </button>
         </div>
       </form>
