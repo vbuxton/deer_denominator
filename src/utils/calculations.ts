@@ -5,10 +5,13 @@ export const calculateCameraDensity = (camera: CameraData, movementRate: number)
   const angleLeftRadians = camera.detectionAngleLeft * (Math.PI / 180);
   const angleRightRadians = camera.detectionAngleRight * (Math.PI / 180);
   
+  // Convert detection distance from meters to km
+  const detectionDistanceKm = camera.detectionDistance / 1000;
+  
   const denominator = 
     camera.trapNights * 
     movementRate * 
-    camera.detectionDistance * 
+    detectionDistanceKm * 
     (2 + angleRightRadians + angleLeftRadians);
   
   if (denominator === 0) return 0;

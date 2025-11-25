@@ -30,7 +30,7 @@ export const App: React.FC = () => {
   const handleLoadBulkCameras = (newCameras: CameraData[]) => {
     setCameras(newCameras);
     setTotalCameras(newCameras.length);
-    setInputMethod('setup');
+    // Keep the user in bulk upload mode instead of going back to setup
   };
 
   const handleUpdateCamera = (id: string, updates: Partial<CameraData>) => {
@@ -154,7 +154,7 @@ export const App: React.FC = () => {
           </div>
         )}
 
-        {inputMethod === 'bulk' && (
+        {inputMethod === 'bulk' && !results && (
           <div className="space-y-6">
             <button
               onClick={() => setInputMethod('setup')}
@@ -163,24 +163,28 @@ export const App: React.FC = () => {
             >
               ← Back
             </button>
-            <div className="card">
-              <h3>🦌 Deer Movement Rate *</h3>
-              <p>Average daily distance traveled (km/day):</p>
-              <div className="input-group">
-                <input
-                  type="number"
-                  min="0.01"
-                  step="0.1"
-                  value={movementRate ?? ''}
-                  onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
-                  placeholder="Required - e.g., 0.8"
-                  required
-                />
-              </div>
-            </div>
-            <BulkUploadForm onLoadCameras={handleLoadBulkCameras} />
-            {cameras.length > 0 && (
+            {cameras.length === 0 ? (
+              <BulkUploadForm onLoadCameras={handleLoadBulkCameras} />
+            ) : (
               <>
+                <div className="alert alert-success">
+                  <p style={{ fontWeight: 600 }}>✓ Successfully loaded {cameras.length} camera(s)!</p>
+                </div>
+                <div className="card">
+                  <h3>🦌 Deer Movement Rate *</h3>
+                  <p>Average daily distance traveled (km/day):</p>
+                  <div className="input-group">
+                    <input
+                      type="number"
+                      min="0.01"
+                      step="0.1"
+                      value={movementRate ?? ''}
+                      onChange={(e) => setMovementRate(e.target.value ? parseFloat(e.target.value) : null)}
+                      placeholder="Required - e.g., 0.8"
+                      required
+                    />
+                  </div>
+                </div>
                 <CameraDataTable
                   cameras={cameras}
                   onUpdateCamera={handleUpdateCamera}

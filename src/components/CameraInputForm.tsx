@@ -104,14 +104,14 @@ export const CameraInputForm: React.FC<CameraInputFormProps> = ({
           </div>
 
           <div className="form-group">
-            <label>Detection Distance (km)</label>
+            <label>Detection Distance (meters)</label>
             <input
               type="number"
               name="detectionDistance"
               value={formData.detectionDistance}
               onChange={handleChange}
-              placeholder="e.g., 0.015"
-              step="0.001"
+              placeholder="e.g., 15"
+              step="0.1"
             />
             {errors.detectionDistance && <p className="error-message">{errors.detectionDistance}</p>}
           </div>

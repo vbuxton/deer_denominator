@@ -79,7 +79,7 @@ export const BulkUploadForm: React.FC<BulkUploadFormProps> = ({ onLoadCameras })
               />
               <div>
                 <p>Click to upload CSV file</p>
-                <p>Supported format: .csv</p>
+                <p style={{ fontSize: '14px', color: '#6b7280', marginTop: '8px' }}>The CSV must contain columns with headers: trapNights, totalDeer, detectionDistance, detectionAngleLeft, detectionAngleRight. Each row represents a different camera. Detection distance must be in meters.</p>
               </div>
             </label>
           </div>
@@ -93,6 +93,7 @@ export const BulkUploadForm: React.FC<BulkUploadFormProps> = ({ onLoadCameras })
             placeholder="Paste CSV data here (with headers: trapNights, totalDeer, detectionDistance, detectionAngleLeft, detectionAngleRight)"
             style={{ width: '100%', height: '128px' }}
           />
+          <p style={{ fontSize: '14px', color: '#6b7280', marginTop: '8px' }}>Each row represents a different camera. Detection distance must be in meters.</p>
           <button
             onClick={handlePaste}
             disabled={loading}
